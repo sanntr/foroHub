@@ -1,4 +1,7 @@
 package com.alura.challenge.foro.domain.repository;
 
-public interface RespuestaRepository {
+import com.alura.challenge.foro.domain.model.respuesta.Respuesta;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RespuestaRepository extends JpaRepository<Respuesta, Long> {
 }
