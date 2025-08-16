@@ -1,6 +1,7 @@
-package com.alura.challenge.foro.infrastructure.security;
+package com.alura.challenge.foro.infrastructure.security.filter;
 
 import com.alura.challenge.foro.domain.repository.UsuarioRepository;
+import com.alura.challenge.foro.infrastructure.security.token.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

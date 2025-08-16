@@ -1,4 +1,4 @@
-package com.alura.challenge.foro.infrastructure.security;
+package com.alura.challenge.foro.infrastructure.security.token;
 
 import com.alura.challenge.foro.domain.model.usuario.Usuario;
 import com.auth0.jwt.algorithms.Algorithm;
