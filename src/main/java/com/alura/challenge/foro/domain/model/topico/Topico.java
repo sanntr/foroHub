@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Getter
+@ToString
 public class Topico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +25,7 @@ public class Topico {
     @Setter
     @NotNull
     @Column(name = "active")
-    private boolean activo=true;
+    private boolean activo;
     @NotBlank
     @Column(name = "topic_title")
     private  String titulo;
@@ -48,6 +49,8 @@ public class Topico {
         this.mensaje=mensaje;
         this.autor=autor;
         this.curso=curso;
+        this.activo=true;
     }
+
 
 }

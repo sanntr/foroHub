@@ -42,4 +42,10 @@ public class TopicoService {
         throw new ValidacionException("No existe ese topico");
     }
 
+    //Metodo para eliminar(Cambiar el estado del topico a false )
+    @Transactional
+    public void eliminarTopico(Long id){
+        var topico=topicoRepository.findById(id);
+        topico.get().setActivo(false);
+    }
 }
