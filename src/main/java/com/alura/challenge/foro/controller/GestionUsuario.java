@@ -14,7 +14,6 @@ public class GestionUsuario {
 
     @PostMapping("/crear")
     public ResponseEntity crear(@RequestBody @Valid CrearUsuario crearUsuario){
-
         return ResponseEntity.ok().build();
     }
 

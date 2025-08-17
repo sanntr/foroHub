@@ -4,10 +4,8 @@ import com.alura.challenge.foro.domain.model.curso.Curso;
 import com.alura.challenge.foro.domain.model.usuario.Usuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -23,6 +21,10 @@ public class Topico {
     @Column(name = "topic_id")
     private Long id;
 
+    @Setter
+    @NotNull
+    @Column(name = "active")
+    private boolean activo=true;
     @NotBlank
     @Column(name = "topic_title")
     private  String titulo;
@@ -47,4 +49,5 @@ public class Topico {
         this.autor=autor;
         this.curso=curso;
     }
+
 }
