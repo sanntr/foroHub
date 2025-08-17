@@ -5,9 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 
 public record DatosUsuario(
         @NotBlank
-        String nombreUsuario,
+        String correo,
         @NotBlank
-        String contrasena,
-        String role
+        String contrasena
 ) {
 }

@@ -40,4 +40,11 @@ public class Topico {
     @ManyToOne(targetEntity = Curso.class)
     @JoinColumn(name = "course_id")
     private  Curso curso;
+
+    public Topico(String titulo, String mensaje, Usuario autor, Curso curso ) {
+        this.titulo=titulo;
+        this.mensaje=mensaje;
+        this.autor=autor;
+        this.curso=curso;
+    }
 }

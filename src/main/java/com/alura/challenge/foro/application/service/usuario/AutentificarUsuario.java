@@ -1,4 +1,4 @@
-package com.alura.challenge.foro.application.dto.usuario;
+package com.alura.challenge.foro.application.service.usuario;
 
 import com.alura.challenge.foro.domain.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,13 +7,15 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+//Este servicio sirve para el funcionamineto de la verificacion del usuario para poder generar el jwt
 @Service
-public class AutentificarrUsuario implements UserDetailsService {
+public class AutentificarUsuario implements UserDetailsService {
+
     @Autowired
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return usuarioRepository.findByName(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return usuarioRepository.findByEmail(email);
     }
 }

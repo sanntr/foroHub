@@ -21,7 +21,7 @@ public class TokenService {
             Algorithm algorithm=Algorithm.HMAC256("hola");
             return JWT.create()
                     .withIssuer("foro_hud")
-                    .withSubject(usuario.getNombre())
+                    .withSubject(usuario.getCorreo())
                     .withExpiresAt(fechaExpiracion())
                     .sign(algorithm);
         }catch ( JWTCreationException e){

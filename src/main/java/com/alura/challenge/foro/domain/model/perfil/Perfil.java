@@ -26,8 +26,9 @@ public class Perfil {
     @Enumerated(EnumType.STRING)
     private TiposPerfil perfil;
 
-    @OneToMany(mappedBy = "perfil")
-    private List<Usuario> usuarios;
+    public Perfil(TiposPerfil perfil) {
+        this.perfil = perfil;
+    }
 }
 
 
