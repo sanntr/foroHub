@@ -36,9 +36,10 @@ public class TopicoService {
     //Metodo para mostrar un solo topico
     public DetallesTopico buscarTopico(Long id){
         var topico= topicoRepository.findById(id);
-        topico.ifPresent(
-                value -> convertirtopico.topicoaDetallesTopico(value)
-        );
+        if (topico.isPresent()){
+            return convertirtopico.topicoaDetallesTopico(topico.get());
+        }
+        topicoRepository.findAll().stream().forEach(System.out::println);
         throw new ValidacionException("No existe ese topico");
     }
 
