@@ -5,6 +5,8 @@ import com.alura.challenge.foro.application.dto.topico.NuevoTopico;
 import com.alura.challenge.foro.domain.repository.TopicoRepository;
 import com.alura.challenge.foro.infrastructure.exception.ValidacionException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,5 +50,13 @@ public class TopicoService {
     public void eliminarTopico(Long id){
         var topico=topicoRepository.findById(id);
         topico.get().setActivo(false);
+    }
+
+    //Metodo para lista topicos
+    public Page<DetallesTopico> listarTopico(Pageable pageable){
+        return  topicoRepository.findAllByActivoTrue(pageable)
+                .map(e->convertirtopico.topicoaDetallesTopico(e)
+        );
+
     }
 }
