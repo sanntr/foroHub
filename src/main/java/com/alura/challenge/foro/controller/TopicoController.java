@@ -64,7 +64,7 @@ public class TopicoController {
     }
 
     //Cambiar Datos de un topico, solo se puede cambiar el titulo y el mensaje
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity modificar(@PathVariable Long id, @RequestBody CambioDatosTopico cambioDatosTopico){
         return ResponseEntity.ok(topicoService.cambiarDatos(id,cambioDatosTopico));
     }
