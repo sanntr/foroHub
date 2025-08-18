@@ -38,7 +38,7 @@ public class TopicoController {
     @PostMapping
     public ResponseEntity crear(@RequestBody @Valid NuevoTopico nuevoTopico, UriComponentsBuilder uriComponentsBuilder){
         var topico=topicoService.CrearTopico(nuevoTopico);
-        var uri=uriComponentsBuilder.path("/medicos/{id}").buildAndExpand(topico.id()).toUri();
+        var uri=uriComponentsBuilder.path("/topico/{id}").buildAndExpand(topico.id()).toUri();
         return ResponseEntity.created(uri).body(topico);
     }
 
@@ -64,7 +64,7 @@ public class TopicoController {
     }
 
     //Cambiar Datos de un topico, solo se puede cambiar el titulo y el mensaje
-    @PutMapping("/{id}")
+    @PutMapping ("/{id}")
     public ResponseEntity modificar(@PathVariable Long id, @RequestBody CambioDatosTopico cambioDatosTopico){
         return ResponseEntity.ok(topicoService.cambiarDatos(id,cambioDatosTopico));
     }
