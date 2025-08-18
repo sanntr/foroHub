@@ -2,12 +2,11 @@ package com.alura.challenge.foro.infrastructure.security.token;
 
 import com.alura.challenge.foro.domain.model.usuario.Usuario;
 import com.auth0.jwt.algorithms.Algorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-
 import com.auth0.jwt.JWT;
-
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -15,10 +14,11 @@ import java.time.ZoneOffset;
 
 @Service
 public class TokenService {
-
+    @Value("${api.security.token.secret}")
+    private String secreto;
     public String crearToken(Usuario usuario){
         try {
-            Algorithm algorithm=Algorithm.HMAC256("hola");
+            Algorithm algorithm=Algorithm.HMAC256(secreto);
             return JWT.create()
                     .withIssuer("foro_hud")
                     .withSubject(usuario.getCorreo())
@@ -36,7 +36,7 @@ public class TokenService {
 
     public String getSubject(String token){
         try {
-            var algoritmo = Algorithm.HMAC256("hola");
+            var algoritmo = Algorithm.HMAC256(secreto);
 
             return JWT.require(algoritmo)
                     .withIssuer("foro_hud")
