@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-//Este servicio sirve para el funcionamineto de la verificacion del usuario para poder generar el jwt
+//Este servicio sirve para el funcionamineto de la verificacion del usuario 
 @Service
 public class AutentificarUsuario implements UserDetailsService {
 

@@ -6,10 +6,7 @@ import com.alura.challenge.foro.domain.model.perfil.TiposPerfil;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,6 +26,10 @@ public class Usuario  implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
+
+    @Setter
+    @Column(name = "status")
+    private boolean activo;
 
     @NotBlank
     @Column(name = "name")
@@ -52,6 +53,7 @@ public class Usuario  implements UserDetails {
         this.correo = correo;
         this.contrasena = contrasena;
         this.perfil = perfil;
+        this.activo=true;
     }
 
     public void setPerfil(TiposPerfil tipoPerfil) {

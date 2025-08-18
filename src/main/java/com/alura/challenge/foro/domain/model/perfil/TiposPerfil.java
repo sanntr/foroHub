@@ -2,7 +2,7 @@ package com.alura.challenge.foro.domain.model.perfil;
 
 
 public enum TiposPerfil {
-        ADMINISTRADOR("Administrador"),
+    ADMINISTRADOR("Administrador"),
     MODERADOR("Moderador"),
     PROFESOR("Profesor"),
     ESTUDIANTE("Estudiante"),

@@ -30,6 +30,7 @@ public class Perfil {
     public Perfil(TiposPerfil perfil) {
         this.perfil = perfil;
     }
+
 }
 
 

@@ -15,6 +15,6 @@ public record CrearUsuario(
         @NotBlank
         String contrasena,
         @NotNull
-        TiposPerfil perfil
+        String perfil
 ) {
 }
