@@ -26,10 +26,13 @@ public class Topico {
     @NotNull
     @Column(name = "active")
     private boolean activo;
+
+    @Setter
     @NotBlank
     @Column(name = "topic_title")
     private  String titulo;
 
+    @Setter
     @Column(name = "message")
     private String mensaje;
 

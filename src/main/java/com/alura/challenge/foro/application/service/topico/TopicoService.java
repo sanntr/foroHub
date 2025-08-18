@@ -1,7 +1,9 @@
 package com.alura.challenge.foro.application.service.topico;
 
+import com.alura.challenge.foro.application.dto.topico.CambioDatosTopico;
 import com.alura.challenge.foro.application.dto.topico.DetallesTopico;
 import com.alura.challenge.foro.application.dto.topico.NuevoTopico;
+import com.alura.challenge.foro.domain.model.topico.Topico;
 import com.alura.challenge.foro.domain.repository.TopicoRepository;
 import com.alura.challenge.foro.infrastructure.exception.ValidacionException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +39,7 @@ public class TopicoService {
 
     //Metodo para mostrar un solo topico
     public DetallesTopico buscarTopico(Long id){
-        var topico= topicoRepository.findById(id);
+        var topico= topicoRepository.findByIdAndActivoTrue(id);
         if (topico.isPresent()){
             return convertirtopico.topicoaDetallesTopico(topico.get());
         }
@@ -59,4 +61,28 @@ public class TopicoService {
         );
 
     }
+
+    //Metodo para modificar un topico
+    @Transactional
+    public DetallesTopico  cambiarDatos(Long id, CambioDatosTopico cambioDatosTopico){
+
+        Topico topico=topicoRepository.findByIdAndActivoTrue(id).orElseThrow(
+                () ->new ValidacionException("Topico no existente")
+        );
+
+        if (cambioDatosTopico.titulo() == null && cambioDatosTopico.mensaje() == null) {
+            throw new ValidacionException("so se envio datos para modificar ");
+        }
+        //Realzia los cambios
+        if(cambioDatosTopico.titulo() != null){
+            topico.setTitulo(cambioDatosTopico.titulo());
+        }
+        if (cambioDatosTopico.mensaje() != null){
+            topico.setMensaje(cambioDatosTopico.mensaje());
+        }
+        return convertirtopico.topicoaDetallesTopico(topico);
+
+    }
+
+
 }
